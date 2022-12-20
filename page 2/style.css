@@ -1,0 +1,431 @@
+@charset "UTF-8";
+/* 
+$content-width will be the max width of the content within the navigation bar. 
+$breakpoint determines at which width the media query breakpoint will take effect.
+*/
+* {box-sizing: border-box;}
+body {
+  background-color: #f5f5f5;
+}
+.userpic{
+  width: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 0px;
+  margin-top: 2px;
+}
+nav {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  float: left;
+  padding: 0px 0px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  float: left;
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  padding: 0 20px;
+  line-height: 50px;
+  background: #252525;
+  color: #ffffff;
+  text-decoration: none;
+  /*
+  The full path of this code is nav ul li a:not(:only-child):after. This means that the code will apply to any a tag in our nav list that is NOT an only child, aka any dropdown. The :after means it comes after the output of the tag. I’ve decided that to specify any nav item as a dropdown, it will be followed by a unicode arrow – ▾ (#9662).
+  */
+}
+
+nav ul li a:hover {
+  background: #f2f2f2;
+  color: #fb5958;
+}
+.active {
+  background-color: #f2f2f2;
+  color: #fb5958;
+}
+
+nav ul li a:not(:only-child):after {
+  padding-left: 4px;
+  content: " ▾";
+}
+
+nav ul li ul li {
+  min-width: 190px;
+}
+
+nav ul li ul li a {
+  padding: 15px;
+  line-height: 20px;
+}
+
+.nav-dropdown {
+  position: absolute;
+  z-index: 1;
+  /* Guarantees that the dropdown will display on top of any content. */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  display: none;
+}
+
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgb(255, 255, 255);
+  height: 50px;
+  width: 50px;
+}
+
+@media only screen and (max-width: 800px) {
+  .nav-mobile {
+    display:block;
+  }
+
+  nav {
+    width: 100%;
+    padding: 70px 0 15px;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav ul li {
+    float: none;
+  }
+
+  nav ul li a {
+    padding: 15px;
+    line-height: 20px;
+  }
+
+  nav ul li ul li a {
+    padding-left: 30px;
+  }
+}
+#nav-toggle {
+  position: absolute;
+  left: 10px;
+  top: 11px;
+  cursor: pointer;
+  padding: 10px 35px 16px 0px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: #463f3f;
+  position: absolute;
+  display: block;
+  content: "";
+  transition: all 300ms ease-in-out;
+}
+
+#nav-toggle span:before {
+  top: -10px;
+}
+
+#nav-toggle span:after {
+  bottom: -10px;
+}
+
+#nav-toggle.active span {
+  background-color: transparent;
+}
+
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+  top: 0;
+}
+
+#nav-toggle.active span:before {
+  transform: rotate(45deg);
+}
+
+#nav-toggle.active span:after {
+  transform: rotate(-45deg);
+}
+
+@media screen and (min-width: 800px) {
+  .nav-list {
+    display: block !important;
+  }
+}
+/* 
+.navigation – the outer wrapper for the navbar. Specifies the height and color, and will stretch the full width of the viewport.
+*/
+.navigation {
+  height: 50px;
+  background: #000000;
+}
+
+/*
+.nav-container – the inner wrapper for the navbar. Defines how far the actual content should stretch.
+*/
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+.brand {
+  position: relative;
+  padding-left: 0px;
+  float: left;
+  line-height: 50px;
+  text-transform: uppercase;
+  font-size: 1.4em;
+}
+
+.brand a,
+.brand a:visited {
+  color: #fffefe;
+  text-decoration: none;
+}
+.claim {
+  margin-top: 0px;
+  padding-top: 10px;
+  margin-left: 0px;
+  padding-left: 50px;
+  margin-right: 0px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 3ch;
+  font-weight: bold;
+  background-color: #246aa8;
+}
+.claim a{
+  color: #f2f2f2;
+}
+
+input[type=text] {
+    margin-left: 1000px;
+    margin-bottom: 0px;
+    width: 130px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: rgb(255, 255, 255);
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 5px 20px 0px 20px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+  
+input[type=text]:focus {
+  width: 20%;
+}
+.upload form {
+  margin-top: 30px;
+  margin-left: 50px;
+
+}
+.upload button {
+  margin-left: 0px;
+  bottom: 10px;
+}
+.payment {
+  margin-top: 0px;
+  margin-left: 50px;
+}
+label {
+  display: block;
+  color: #000000;
+}
+
+.floatBlock {
+  margin: 20px 30px 0px 0px;
+}
+
+.labelish {
+	color:#000000;
+	margin: 20px 130px 0px 0px;
+}
+.status {
+  margin-top: 10px;
+  margin-left: 50px;
+  flex-direction: row;
+}
+
+.paymentOptions {
+	border: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	break-before: always;
+  margin: 0px 0px 0px 0px;
+}
+
+.statusOptions{
+  position: relative;
+	border: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	break-before: always;
+}
+.status1 {
+  position: relative;
+  margin-left: 460px;
+  bottom: 75px;
+}
+.list1 {
+  position: relative;
+  margin-left: 120px;
+  bottom: 20px;
+}
+.status3 {
+  position: relative;
+  margin-left: 460px;
+  bottom: 65px;
+
+
+}
+.list3 {
+  position: relative;
+  margin-left: 120px;
+  bottom: 20px;
+}
+select{
+  border:none;
+  padding: 1px 10px;
+  border-radius:5px;
+
+}
+
+select:focus{
+  outline:none;
+}
+
+.statusOptions1{
+  border: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	break-before: always;
+  margin: 0px 0px 0px 0px;
+}
+
+.status2 {
+  position: relative;
+  margin: 0px 0px 0px 800px;
+  bottom: 160px;
+  
+}
+.status2 input {
+  position: relative;
+  margin-left: 40px;
+  top: 30px;
+}
+.status2 a {
+  position: relative;
+  margin-left: 20px;
+  top: 30px;
+}
+.status2 label {
+  position: relative;
+  margin-left: 40px;
+  top: 0px;
+
+}
+
+
+.claimback {
+  
+  margin: 0px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2ch;
+  font-weight: bold;
+  background-color: #f5f5f5;
+
+}
+table {
+  position: relative;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 95%;
+  margin: 0px 0px 0px 40px ;
+  bottom: 80px;
+}
+
+
+
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  background-color: #3b7fbb;
+}
+td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  font-weight: 10;
+  font-size: 1.5ch;
+}
+tr:nth-child(even) {
+  background-color: #c0c0c0;
+}
+.mybutton {
+  position: relative;
+  bottom: 75px;
+  margin: 0px 0px 10px 40px ;
+}
+/*
+.filterDiv {
+  float: left;
+  background-color: #2196F3;
+  color: #ffffff;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none;
+}*/
+
+.show {
+  display: block;
+}
+
+.container {
+  margin-top: 0px;
+  overflow: hidden;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  margin: 0px 10px 0px 0px ;
+  padding: 4px 6px;
+  background-color: #8ab0d1;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #246aa8;
+  color: #ffffff;
+}
+
+.btn.active {
+  background-color: #246aa8;
+  color: white;
+}
+
+/*  datepicker   */

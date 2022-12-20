@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>MainPage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="sampindex.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- 
+Following Tania Ruscia's tutorial on creating your own responsive dropdown navigation bar. https://www.taniarascia.com/responsive-dropdown-navigation-bar/
+-->
+<section class="navigation">
+  <div class="nav-container">
+    <div class="brand">
+      <a href="#!">FinMotoRobo</a>
+    </div>
+    <nav>
+      <div class="nav-mobile">
+        <a id="nav-toggle" href="#!"><span></span></a>
+      </div>
+      <ul class="nav-list">
+        <!-- Setting the links to #! will ensure that no action takes place on click. -->
+        <li><a href="#!">What's New</a></li>
+        <li><a href="#!">New to FinMotoRobo</a></li>
+        <li><a href="#!">Adjuster Support</a>
+          <ul class="nav-dropdown">
+            <li><a href="#!">Adjuster Dashboard</a></li>
+            <li><a href="#!">Claim Tools</a></li>
+            <li><a href="#!">Form Overview</a></li>
+            <li><a href="#!">Entering a Response/Decision</a></li>
+            <li><a href="#!">Target Date</a></li>
+            <li><a href="#!">Adjuster Reason Codes</a></li>
+          </ul>
+        </li>
+        <li><a href="#!">Troubleshooting</a></li>
+        <li><a href="#!">Resources</a></li>
+        <li><a href="#!">Privacy</a></li>
+        <img class="userpic" src="LOGO.png" alt="logo" width="45" height="45" />
+      </ul>
+    </nav>
+  </div>
+</section>
+<section>
+  <div class="navdown">
+    
+  </div>
+</section>
+
+
+
+
+
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script  src="sampindex.js"></script>
+
+</body>
+</html>
