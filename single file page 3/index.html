@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Subrogation - Dashboard</title>
+ 
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+</head>
+<style>
+  /*  import google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  background: rgb(226, 226, 226);
+}
+nav{
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  width: 90px;
+  /* width: 280px; */
+  background: #fff;
+  overflow: hidden;
+  transition: 1s;
+}
+nav:hover{
+  width: 280px;
+  transition: 1s;
+}
+.logo{
+  text-align: center;
+  display: flex;
+  margin: 10px 0 0 10px;
+  padding-bottom: 3rem;
+}
+
+.logo img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+.logo span{
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+a{
+  position: relative;
+  width: 280px;
+  font-size: 14px;
+  color: rgb(85, 83, 83);
+  display: table;
+  padding: 10px;
+}
+nav .fas{
+  position: relative;
+  width: 70px;
+  height: 40px;
+  top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+.nav-item{
+  position: relative;
+  top: 12px;
+  margin-left: 10px;
+}
+a:hover{
+  background: #eee;
+}
+a:hover i{
+  color: #34AF6D;
+  transition: 0.5s;
+}
+.logout{
+  position: absolute;
+  bottom: 0;
+}
+
+.container{
+  display: flex;
+}
+
+/* MAin Section */
+.main{
+  position: relative;
+  padding: 20px;
+  width: 100%;
+}
+.main-top{
+  display: flex;
+  width: 100%;
+}
+.main-top i{
+  position: absolute;
+  right: 0;
+  margin: 10px 30px;
+  color: rgb(110, 109, 109);
+  cursor: pointer;
+}
+/*.main .users{
+  display: flex;
+  width: 100%;
+}
+.users .card{
+  width: 33%;
+  margin: 10px;
+  background: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}*/
+.users .card img{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.users .card h4{
+  text-transform: uppercase;
+}
+.users .card p{
+  font-size: 12px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.users table{
+  margin:  auto;
+}
+.users .per span{
+  padding: 5px;
+  border-radius: 10px;
+  background: rgb(223, 223, 223);
+}
+.users td{
+  font-size: 14px;
+  padding-right: 15px;
+}
+.users .card button{
+  width: 100%;
+  margin-top: 8px;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid #4AD489;
+}
+.users .card button:hover{
+  background: #4AD489;
+  color: #fff;
+  transition: 0.5s;
+}
+
+/* ---------------------------------- 1st row ------------------------------------------ */
+
+.main .users1{
+  display: flex;
+  width: 100%;
+}
+/*---------------------------------------1st card------------------------------------------*/
+.main .users1 .card1{
+    width: 33%;
+    margin: 10px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+  .main .users1 .card1 h4 {
+    text-transform: uppercase;
+    margin: 10px 20px;
+
+  }
+
+
+/*------------------------------------2nd card -------------------------------------------------*/
+.main .users1 .card2{
+    width: 33%;
+    margin: 10px;
+    background: #fff;
+    text-align: left;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+  }
+  .main .users1 .card2 h4 {
+    text-transform: uppercase;
+    margin: 10px 20px;
+
+  }
+  .main .users1 .card2 p{
+    font-size: 12px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .main .users1 .card2 table{
+    margin:  auto;
+  }
+  .users1 .card2 .per span{
+    padding: 5px;
+    border-radius: 10px;
+    background: rgb(223, 223, 223);
+  }
+  .users1.card2 td{
+    font-size: 14px;
+    padding-right: 15px;
+  }
+  /*--------------3rd card ------------------------------------------------------------------------------*/
+.main .users1 .card3{
+    width: 33%;
+    margin: 10px;
+    background: #fff;
+    text-align: left;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+  }
+  .main .users1 .card3 h4 {
+    text-transform: uppercase;
+    margin: 10px 20px;
+
+  }
+  .main .users1 .card3 p{
+    font-size: 12px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .main .users1 .card3 table{
+    margin:  auto;
+    width: 80%;
+
+  }
+
+  .users1 .card3 td{
+    font-size: 14px;
+    padding-right: 15px;
+    
+  }
+  .users1 .card3 tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+
+/* ----------------------------------------   2nd row   --------------------------------------------------*/
+.main .users2{
+    display: flex;
+    width: 100%;
+  }
+  /*---------------------------------------------1 st card-------------------------------------------------*/
+    .main .users2 .card1{
+      width: 33%;
+      margin: 10px;
+      background: #fff;
+      text-align: left;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+    .main .users2 .card1 h4 {
+        text-transform: uppercase;
+        margin: 10px 20px;
+    
+      }
+    .main .users2 .card1 p{
+        font-size: 12px;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .main .users2 .card1 table{
+        margin:  auto;
+      }
+
+      .users2.card1 td{
+        font-size: 14px;
+        padding-right: 15px;
+      }
+      /*-----------------------------     2nd card -----------------------------------------------------*/
+  .main .users2 .card2{
+      width: 33%;
+      margin: 10px;
+      background: #fff;
+      text-align: left;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+    .main .users2 .card2 h4 {
+        text-transform: uppercase;
+        margin: 10px 20px;
+    
+      }
+    .main .users2 .card2 p{
+        font-size: 12px;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .main .users2 .card2 table{
+        margin:  auto;
+      }
+
+      .users2.card2 td{
+        font-size: 14px;
+        padding-right: 15px;
+      }
+ /*----------------------------------------3rd card -----------------------------------------------*/     
+  .main .users2 .card3{
+      width: 33%;
+      margin: 10px;
+      background: #fff;
+      text-align: left;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+    .main .users2 .card3 h4 {
+        text-transform: uppercase;
+        margin: 10px 20px;
+    
+      }
+    .main .users2 .card3 p{
+        font-size: 12px;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      .main .users2 .card3 table{
+        margin:  auto;
+      }
+
+      .users2.card3 td{
+        font-size: 14px;
+        padding-right: 15px;
+      }
+/* ----------------------------------------   3rd row   --------------------------------------------------*/
+.main .users3{
+  display: flex;
+  width: 100%;
+}
+    .main .users3 .card1{
+      width: 40%;
+      margin: 10px;
+      background: #fff;
+      text-align: left;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+      text-transform: uppercase;
+    }
+    .main .users3 .card1 h4 {
+        text-transform: uppercase;
+        margin: 10px 20px;
+
+    }
+    .main .users3 .card1 p{
+        font-size: 12px;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    .main .users3 .card1 table{
+        margin:  auto;
+    }
+
+    .users3 .card1 td{
+        font-size: 14px;
+        padding-right: 15px;
+    }
+    .users3 .card1 tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+
+/* ----------------------------------------   3rd row  2nd card --------------------------------------------------*/
+      .main .users3 .card2{
+        width: 60%;
+        margin: 10px;
+        background: #fff;
+        text-align: left;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+      }
+      .main .users3 .card2 h4 {
+          text-transform: uppercase;
+          margin: 10px 20px;
+      
+      }
+      .main .users3 .card2 p{
+          font-size: 12px;
+          margin-bottom: 15px;
+          text-transform: uppercase;
+          text-align: center;
+      }
+      .main .users3 .card2 textarea{
+        margin:  auto;
+        width: 80%;
+        height: 150px;
+        margin-left: 60px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #e4e3e3;
+        font-size: 12px;
+        resize: none;
+      }
+  
+      /*-.users3 .card2 textarea{
+          font-size: 14px;
+          padding-right: 15px;
+      }*/
+
+/*Attendance List serction  */
+.attendance{
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+.attendance-list{
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+.table{
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 15px;
+  min-width: 100%;
+  overflow: hidden;
+  border-radius: 5px 5px 0 0;
+}
+table thead tr{
+  color: #fff;
+  background: #34AF6D;
+  text-align: left;
+  font-weight: bold;
+}
+.table th,
+.table td{
+  padding: 12px 15px;
+}
+.table tbody tr{
+  border-bottom: 1px solid #ddd;
+}
+.table tbody tr:nth-of-type(odd){
+  background: #f3f3f3;
+}
+.table tbody tr.active{
+  font-weight: bold;
+  color: #4AD489;
+}
+.table tbody tr:last-of-type{
+  border-bottom: 2px solid #4AD489;
+}
+.table button{
+  padding: 6px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #4AD489;
+}
+.table button:hover{
+  background: #4AD489;
+  color: #fff;
+  transition: 0.5rem;
+}
+
+
+/*   chart   */
+.main.users1.card1.container1 {
+
+    width: 100%;
+    background-color: #f0f0f0;
+    position: relative;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    box-shadow: 20px 20px 40px rgba(60, 60, 150, 0.25);
+    display: grid;
+    place-items: center;
+  }
+  .circular-progress {
+    position: relative;
+    margin: auto;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  }
+  .circular-progress:before {
+    content: "";
+    position: absolute;
+    height: 84%;
+    width: 84%;
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+  .value-container {
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    color: #200f0f;
+  }
+
+
+</style>
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#" class="logo">
+          <img src="LOGO.png">
+          <span class="nav-item">Claim <br>Subrogation</span>
+        </a></li>
+        <!--<li><a href="#">
+          <i class="fas fa-menorah"></i>
+          <span class="nav-item">Data</span>
+        </a></li>
+        <li><a href="#">
+          <i class="fas fa-comment"></i>
+          <span class="nav-item">Message</span>
+        </a></li>-->
+        <li><a href="#">
+          <i class="fas fa-database"></i>
+          <span class="nav-item">Data</span>
+        </a></li>
+        <li><a href="#">
+          <i class="fas fa-chart-bar"></i>
+          <span class="nav-item">Data Profiling</span>
+        </a></li>
+        <!--<li><a href="#">
+          <i class="fas fa-cog"></i>
+          <span class="nav-item">Setting</span>
+        </a></li>
+
+        <li><a href="#" class="logout">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="nav-item">Log out</span>
+        </a></li>-->
+      </ul>
+    </nav>
+
+
+    <section class="main">
+      <div class="main-top">
+        <h1>Dashboard</h1>
+        <i class="fas fa-user-cog"></i>
+      </div>
+      <div class="users1">
+        <div class="card1">
+            <h4>Prediction</h4>
+            <div class="container1">
+                <div class="circular-progress">
+                  <div class="value-container"></div>
+                </div>
+            </div>
+          <!--<p>Ui designer</p>-->
+        </div>
+        <div class="card2">
+            <h4>Success</h4>
+             
+          
+          <p>According to claim...</p>
+          <div class="per">
+            <table>
+              <tr>
+                <td>according to the claim</td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="card3">
+            <h4>Claimnant's INFO</h4>
+
+          
+          <p></p>
+          <div class="per">
+            <table>
+              <tr>
+                <td><span>Claimant ID</span></td>
+                <td><span>oc12345</span></td>
+              </tr>
+              <tr>
+                <td><span>Gender</span></td>
+                <td>female</td>
+              </tr>
+              <tr>
+                <td><span>Education</span></td>
+                <td><span>bachelor</span></td>
+              </tr>
+              <tr>
+                <td><span>Location Code</span></td>
+                <td>Rural</td>
+              </tr>
+              <tr>
+                <td><span>Marital Status</span></td>
+                <td><span>Married</span></td>
+              </tr>
+              <tr>
+                <td><span>Policy Type</span></td>
+                <td>Personal Auto</td>
+              </tr>
+            </table>
+          </div>
+          <button></button>
+        </div>
+      </div>
+      <!------------------------------------2nd row ------------------------------------------->
+      <div class="users2">
+        <div class="card1">
+            <h4>Income</h4>
+            <p></p>
+          <div class="per">
+            <table>
+              <tr>
+                <td>EUR</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>€ 80000</td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="card2">
+            <h4>Total Claim Amount</h4>
+          <p></p>
+          <div class="per">
+            <table>
+              <tr>
+                <td>EUR</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>€ 1000</td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+        <div class="card3">
+            <h4>Vehicle Class</h4>
+
+          <p></p>
+          <div class="per">
+            <table>
+              <tr>
+                <td>Type</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Two-Door Car</td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+          <button></button>
+        </div>
+      </div>
+      <!-- --------------------------------- 3rd   row ------------------------------------>
+      <div class="users3">
+        <div class="card1">
+          <h4>Predictive Factors</h4>
+
+        
+            <p></p>
+            <div class="per">
+              <table>
+                <tr>
+                  <td><span>Predictor Name</span></td>
+                  <td><span>Predictor Value</span></td>
+                </tr>
+                <tr>
+                  <td><span>Gender</span></td>
+                  <td>female</td>
+                </tr>
+                <tr>
+                  <td><span>Education</span></td>
+                  <td><span>bachelor</span></td>
+                </tr>
+                <tr>
+                  <td><span>Location Code</span></td>
+                  <td>Rural</td>
+                </tr>
+                <tr>
+                  <td><span>Marital Status</span></td>
+                  <td><span>Married</span></td>
+                </tr>
+                <tr>
+                  <td><span>Policy Type</span></td>
+                  <td>Personal Auto</td>
+                </tr>
+              </table>
+            </div>
+              <button></button>
+        </div>
+        <div class="card2">
+            <h4>Recommendation</h4>
+          <p></p>
+          <div class="per">
+            <textarea></textarea>
+            <!--<table>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>-->
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    let progressBar = document.querySelector(".circular-progress");
+    let valueContainer = document.querySelector(".value-container");
+
+    let progressValue = 0;
+    let progressEndValue = 50;
+    let speed = 20;
+
+    let progress = setInterval(() => {
+      progressValue++;
+      valueContainer.textContent = `${progressValue}%`;
+      progressBar.style.background = `conic-gradient(
+          #4d5bf9 ${progressValue * 3.6}deg,
+          #cadcff ${progressValue * 3.6}deg
+      )`;
+      if (progressValue == progressEndValue) {
+        clearInterval(progress);
+      }
+    }, speed);
+
+  </script>
+</body>
+</html>

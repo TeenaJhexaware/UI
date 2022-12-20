@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MainPage</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+</head>
+<style>
+  @charset "UTF-8";
+/* 
+$content-width will be the max width of the content within the navigation bar. 
+$breakpoint determines at which width the media query breakpoint will take effect.
+*/
+* {box-sizing: border-box;}
+body {
+  background-color: #f5f5f5;
+}
+.userpic{
+  width: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 0px;
+  margin-top: 2px;
+}
+nav {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  float: left;
+  padding: 0px 0px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  float: left;
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  padding: 0 20px;
+  line-height: 50px;
+  background: #252525;
+  color: #ffffff;
+  text-decoration: none;
+  /*
+  The full path of this code is nav ul li a:not(:only-child):after. This means that the code will apply to any a tag in our nav list that is NOT an only child, aka any dropdown. The :after means it comes after the output of the tag. I’ve decided that to specify any nav item as a dropdown, it will be followed by a unicode arrow – ▾ (#9662).
+  */
+}
+
+nav ul li a:hover {
+  background: #f2f2f2;
+  color: #fb5958;
+}
+.active {
+  background-color: #f2f2f2;
+  color: #fb5958;
+}
+
+nav ul li a:not(:only-child):after {
+  padding-left: 4px;
+  content: " ▾";
+}
+
+nav ul li ul li {
+  min-width: 190px;
+}
+
+nav ul li ul li a {
+  padding: 15px;
+  line-height: 20px;
+}
+
+.nav-dropdown {
+  position: absolute;
+  z-index: 1;
+  /* Guarantees that the dropdown will display on top of any content. */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  display: none;
+}
+
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgb(255, 255, 255);
+  height: 50px;
+  width: 50px;
+}
+
+@media only screen and (max-width: 800px) {
+  .nav-mobile {
+    display:block;
+  }
+
+  nav {
+    width: 100%;
+    padding: 70px 0 15px;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav ul li {
+    float: none;
+  }
+
+  nav ul li a {
+    padding: 15px;
+    line-height: 20px;
+  }
+
+  nav ul li ul li a {
+    padding-left: 30px;
+  }
+}
+#nav-toggle {
+  position: absolute;
+  left: 10px;
+  top: 11px;
+  cursor: pointer;
+  padding: 10px 35px 16px 0px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: #463f3f;
+  position: absolute;
+  display: block;
+  content: "";
+  transition: all 300ms ease-in-out;
+}
+
+#nav-toggle span:before {
+  top: -10px;
+}
+
+#nav-toggle span:after {
+  bottom: -10px;
+}
+
+#nav-toggle.active span {
+  background-color: transparent;
+}
+
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+  top: 0;
+}
+
+#nav-toggle.active span:before {
+  transform: rotate(45deg);
+}
+
+#nav-toggle.active span:after {
+  transform: rotate(-45deg);
+}
+
+@media screen and (min-width: 800px) {
+  .nav-list {
+    display: block !important;
+  }
+}
+/* 
+.navigation – the outer wrapper for the navbar. Specifies the height and color, and will stretch the full width of the viewport.
+*/
+.navigation {
+  height: 50px;
+  background: #000000;
+}
+
+/*
+.nav-container – the inner wrapper for the navbar. Defines how far the actual content should stretch.
+*/
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+.brand {
+  position: relative;
+  padding-left: 0px;
+  float: left;
+  line-height: 50px;
+  text-transform: uppercase;
+  font-size: 1.4em;
+}
+
+.brand a,
+.brand a:visited {
+  color: #fffefe;
+  text-decoration: none;
+}
+.claim {
+  margin-top: 0px;
+  padding-top: 10px;
+  margin-left: 0px;
+  padding-left: 50px;
+  margin-right: 0px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 3ch;
+  font-weight: bold;
+  background-color: #246aa8;
+}
+.claim a{
+  color: #f2f2f2;
+}
+
+input[type=text] {
+    margin-left: 1000px;
+    margin-bottom: 0px;
+    width: 130px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: rgb(255, 255, 255);
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 5px 20px 0px 20px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+  
+input[type=text]:focus {
+  width: 20%;
+}
+.upload form {
+  margin-top: 30px;
+  margin-left: 50px;
+
+}
+.upload button {
+  margin-left: 0px;
+  bottom: 10px;
+}
+.payment {
+  margin-top: 0px;
+  margin-left: 50px;
+}
+label {
+  display: block;
+  color: #000000;
+}
+
+.floatBlock {
+  margin: 20px 30px 0px 0px;
+}
+
+.labelish {
+	color:#000000;
+	margin: 20px 130px 0px 0px;
+}
+.status {
+  margin-top: 10px;
+  margin-left: 50px;
+  flex-direction: row;
+}
+
+.paymentOptions {
+	border: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	break-before: always;
+  margin: 0px 0px 0px 0px;
+}
+
+.statusOptions{
+  position: relative;
+	border: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	break-before: always;
+}
+.status1 {
+  position: relative;
+  margin-left: 460px;
+  bottom: 75px;
+}
+.list1 {
+  position: relative;
+  margin-left: 120px;
+  bottom: 20px;
+}
+.status3 {
+  position: relative;
+  margin-left: 460px;
+  bottom: 65px;
+
+
+}
+.list3 {
+  position: relative;
+  margin-left: 120px;
+  bottom: 20px;
+}
+select{
+  border:none;
+  padding: 1px 10px;
+  border-radius:5px;
+
+}
+
+select:focus{
+  outline:none;
+}
+
+.statusOptions1{
+  border: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	break-before: always;
+  margin: 0px 0px 0px 0px;
+}
+
+.status2 {
+  position: relative;
+  margin: 0px 0px 0px 800px;
+  bottom: 160px;
+  
+}
+.status2 input {
+  position: relative;
+  margin-left: 40px;
+  top: 30px;
+}
+.status2 a {
+  position: relative;
+  margin-left: 20px;
+  top: 30px;
+}
+.status2 label {
+  position: relative;
+  margin-left: 40px;
+  top: 0px;
+
+}
+
+
+.claimback {
+  
+  margin: 0px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2ch;
+  font-weight: bold;
+  background-color: #f5f5f5;
+
+}
+table {
+  position: relative;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 95%;
+  margin: 0px 0px 0px 40px ;
+  bottom: 80px;
+}
+
+
+
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  background-color: #3b7fbb;
+}
+td {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  font-weight: 10;
+  font-size: 1.5ch;
+}
+tr:nth-child(even) {
+  background-color: #c0c0c0;
+}
+.mybutton {
+  position: relative;
+  bottom: 75px;
+  margin: 0px 0px 10px 40px ;
+}
+/*
+.filterDiv {
+  float: left;
+  background-color: #2196F3;
+  color: #ffffff;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none;
+}*/
+
+.show {
+  display: block;
+}
+
+.container {
+  margin-top: 0px;
+  overflow: hidden;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  margin: 0px 10px 0px 0px ;
+  padding: 4px 6px;
+  background-color: #8ab0d1;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #246aa8;
+  color: #ffffff;
+}
+
+.btn.active {
+  background-color: #246aa8;
+  color: white;
+}
+
+/*  datepicker   */
+
+</style>
+<body>
+<!-- partial:index.partial.html -->
+<!-- 
+Following Tania Ruscia's tutorial on creating your own responsive dropdown navigation bar. https://www.taniarascia.com/responsive-dropdown-navigation-bar/
+-->
+<section class="navigation">
+  <div class="nav-container">
+    <div class="brand">
+      <!--<a href="#!">FinMotoRobo</a>-->
+    </div>
+    <nav>
+      <div class="nav-mobile">
+        <a id="nav-toggle" href="#!"><span></span></a>
+      </div>
+      <ul class="nav-list">
+        <!-- Setting the links to #! will ensure that no action takes place on click. -->
+        <li><a href="#!" >Create New Claim</a></li>
+        <li><a href="#!" class="active">Claims</a></li>
+        <li><a href="#!">Request for Information</a></li>
+        <!--<li><a href="#!">Services</a>
+          <ul class="nav-dropdown">
+            <li><a href="#!">Web Design</a></li>
+            <li><a href="#!">Web Development</a></li>
+            <li><a href="#!">Graphic Design</a></li>
+          </ul>
+        </li>
+        <li><a href="#!">Pricing</a></li>
+        <li><a href="#!">Contact</a></li>-->
+        <!--<img class="userpic" src="LOGO.png" alt="logo" width="45" height="45" />-->
+      </ul>
+    </nav>
+  </div>
+</section>
+<section>
+  <div class="claimback">
+    <div class="claim">
+      <form>
+        <a>Claims</a>
+        <input type="text" name="search" placeholder="Search..">
+      </form>
+    </div>
+    
+    <div class="upload">
+      <form target="_blank" action="/action_page.php">
+        <input type="file" id="myFile" name="filename">
+        <button>Submit</button>
+      </form>
+    </div>
+    <div class="status">
+        <div id="paymentContainer" name="paymentContainer" class="paymentOptions">
+          <p class="labelish"><b>Display:</b></p>
+            <div id="01" class="floatBlock">
+                <label for="paymentCC"> <input id="paymentCC" name="paymentType" type="radio" value="CREDIT_CARD" />  All  </label>
+            </div>
+
+            <div id="02" class="floatBlock">
+                <label for="paymentInv"> <input id="paymentInv" name="paymentType" type="radio" value="INVOICE" /> Only High Priority </label>
+            </div>
+        </div>
+
+
+      <div id="statuscointainer" name="statusContainer" class="statusOptions">
+        <div class="status1">
+          <label for="language"><b>Subrogation:</b></label>
+          <div class="list1">
+              <select  name="language" id="language">
+                <option value="1">All</option>
+                <option value="2">Yes</option>
+                <option value="3">No</option>
+                <!--<option value="4" selected>4</option>
+                <option value="3" disabled>3</option>-->
+              </select>
+          </div>
+        </div>  
+        <div class="status3">
+          <label for="language"><b>Policy Type:</b></label>
+          <div class="list3"> 
+              <select  name="language" id="language">
+                <option value="1">All</option>
+                <option value="2">Private Car Insurance</option>
+                <option value="3">Two Wheeler Insurance</option>
+                <option value="4">Commercial Vehicle Insurance</option>
+              </select>
+          </div>
+        </div>
+      </div>
+      <div id="statuscointainer" name="statusContainer" class="statusOptions1">
+        <div class="status2">
+          <label for="meeting-time"><b>Date Received:</b></label> 
+          <form action="#" class="ws-validate">
+          <div class="form-row">
+            <!-- max of the first date equals value of the second --> <!-- mmin of the second date equals value of the first --> 
+            <input data-dependent-validation='{"from": "date-to", "prop": "max"}' type="date" id="date-from" placeholder="from" /> &nbsp; <a>To</a> &nbsp;
+            <input data-dependent-validation='{"from": "date-from", "prop": "min"}' type="date" id="date-to" placeholder="to" /> 
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+    <div class="mybutton" id="myBtnContainer">
+      <button class="btn active" onclick="filterSelection('all')"> Search</button>
+      <!--<button class="btn" onclick="filterSelection('cars')"> Clear</button>-->
+      <button type="button" id="btnDelete" class="btn btn-success btn-sm" value="Delete Rows" onclick="DeleteRows()">Clear</button>
+      <!--<button class="btn" onclick="filterSelection('animals')"> Export to Excel</button>-->
+      <button type="button" id="export_button" class="btn btn-success btn-sm">Export as Excell</button>
+      <!--<button class="btn" onclick="filterSelection('fruits')"> Export to PDF</button>-->
+      <button type="button" id="btnExport" class="btn btn-success btn-sm" value="Export" onclick="Export()">Export as PDF</button>
+      <!--<button class="btn" onclick="filterSelection('colors')"> Colors</button>-->
+    </div>
+    <!--<div class="container">
+      <div class="filterDiv cars">BMW</div>
+      <div class="filterDiv colors fruits">Orange</div>
+      <div class="filterDiv cars">Volvo</div>
+      <div class="filterDiv colors">Red</div>
+      <div class="filterDiv cars animals">Mustang</div>
+      <div class="filterDiv colors">Blue</div>
+      <div class="filterDiv animals">Cat</div>
+      <div class="filterDiv animals">Dog</div>
+      <div class="filterDiv fruits">Melon</div>
+      <div class="filterDiv fruits animals">Kiwi</div>
+      <div class="filterDiv fruits">Banana</div>
+      <div class="filterDiv fruits">Lemon</div>
+      <div class="filterDiv animals">Cow</div>
+    </div> -->
+    <table id="claimdata" class="table">
+      <tr>
+        <th>Serial No.</th>
+        <th>Claimant ID</th>
+        <th>Claimant Name</th>
+        <th>Accident  Location</th>
+        <th>Past Claims</th>
+        <th>Policy Type</th>
+        <th>Claim Amount (EUR)</th>
+        <th>Date</th>
+        <th>Sabrogation</th>
+        <th>Probability</th>
+        <th>Sabrogation Likelihood</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><a href="sampindex.html">1000901</td>
+        <td>Ben Stone</td>
+        <td>Prato</td>
+        <td>01</td>
+        <td>Private Car Insurance</td>
+        <td>1000</td>
+        <td>12/12/2022</td>
+        <td>Yes</td>
+        <td>0.90</td>
+        <td>High</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</section>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script>
+    (function($) { // Begin jQuery
+  $(function() { // DOM ready
+    // If a link has a dropdown, add sub menu toggle.
+    $('nav ul li a:not(:only-child)').click(function(e) {
+      $(this).siblings('.nav-dropdown').toggle();
+      // Close one dropdown when selecting another
+      $('.nav-dropdown').not($(this).siblings()).hide();
+      e.stopPropagation();
+    });
+    // Clicking away from dropdown will remove the dropdown class
+    $('html').click(function() {
+      $('.nav-dropdown').hide();
+    });
+    // Toggle open and close nav styles on click
+    $('#nav-toggle').click(function() {
+      $('nav ul').slideToggle();
+    });
+    // Hamburger to X toggle
+    $('#nav-toggle').on('click', function() {
+      this.classList.toggle('active');
+    });
+  }); // end DOM ready
+})(jQuery); // end jQuery
+
+//to export as excel//
+function html_table_to_excel(type)
+    {
+        var data = document.getElementById('claimdata');
+
+        var file = XLSX.utils.table_to_book(data, {sheet: "sheet1"});
+
+        XLSX.write(file, { bookType: type, bookSST: true, type: 'base64' });
+
+        XLSX.writeFile(file, 'file.' + type);
+    }
+
+    const export_button = document.getElementById('export_button');
+
+    export_button.addEventListener('click', () =>  {
+        html_table_to_excel('xlsx');
+    });
+
+
+    // to export as pdf//
+function Export() {
+  html2canvas(document.getElementById('claimdata'), {
+      onrendered: function (canvas) {
+          var data = canvas.toDataURL();
+          var docDefinition = {
+              content: [{
+                  image: data,
+                  width: 500
+              }]
+          };
+          pdfMake.createPdf(docDefinition).download("Table.pdf");
+      }
+  });
+}
+
+//clear table//
+function DeleteRows() {
+  var rowCount = claimdata.rows.length;
+  for (var i = rowCount - 1; i > 0; i--) {
+      claimdata.deleteRow(i);
+  }
+}
+
+
+//  date picker  //
+webshim.setOptions('forms', {
+  lazyCustomMessages: true,
+  addValidators: true
+});
+webshim.setOptions('forms-ext', {
+  replaceUI: 'auto',
+  types: 'date',
+  date: {
+      startView: 2,
+      size: 2,
+      classes: 'hide-spinbtns'
+  }
+});
+
+//start polyfilling
+webshim.polyfill('forms forms-ext');
+
+//initial max/min attributes should be done serverside.
+$(function(){
+  $('#date-from, #date-to').prop('min', function(){
+      return new Date().toJSON().split('T')[0];
+  });
+});
+  </script>
+  <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet" type="text/css">
+
+  <script src="https://kit.fontawesome.com/0d9761d702.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="ie7.css">
+</head>
+<style>
+  @charset "UTF-8";
+/* 
+$content-width will be the max width of the content within the navigation bar. 
+$breakpoint determines at which width the media query breakpoint will take effect.
+*/
+* {box-sizing: border-box;}
+body {
+  background-color: transparent;
+}
+.userpic{
+  width: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 0px;
+  margin-top: 2px;
+}
+nav {
+
+  float: right;
+
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  float: left;
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  padding: 0 6px;
+  line-height: 50px;
+  background: #252525;
+  color: #ffffff;
+  text-decoration: none;
+  /*
+  The full path of this code is nav ul li a:not(:only-child):after. This means that the code will apply to any a tag in our nav list that is NOT an only child, aka any dropdown. The :after means it comes after the output of the tag. I’ve decided that to specify any nav item as a dropdown, it will be followed by a unicode arrow – ▾ (#9662).
+  */
+}
+
+nav ul li a:hover {
+  background: #f2f2f2;
+  color: #fb5958;
+}
+
+nav ul li a:not(:only-child):after {
+  padding-left: 4px;
+  content: " ▾";
+}
+
+nav ul li ul li {
+  min-width: 190px;
+}
+
+nav ul li ul li a {
+  padding: 15px;
+  line-height: 20px;
+}
+
+.nav-dropdown {
+  position: absolute;
+  z-index: 1;
+  /* Guarantees that the dropdown will display on top of any content. */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  display: none;
+}
+
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgb(255, 255, 255);
+  height: 50px;
+  width: 50px;
+}
+
+@media only screen and (max-width: 800px) {
+  .nav-mobile {
+    display: block;
+  }
+
+  nav {
+    width: 100%;
+    padding: 70px 0 15px;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav ul li {
+    float: none;
+  }
+
+  nav ul li a {
+    padding: 15px;
+    line-height: 20px;
+  }
+
+  nav ul li ul li a {
+    padding-left: 30px;
+  }
+}
+#nav-toggle {
+  position: absolute;
+  left: 10px;
+  top: 11px;
+  cursor: pointer;
+  padding: 10px 35px 16px 0px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: #463f3f;
+  position: absolute;
+  display: block;
+  content: "";
+  transition: all 300ms ease-in-out;
+}
+
+#nav-toggle span:before {
+  top: -10px;
+}
+
+#nav-toggle span:after {
+  bottom: -10px;
+}
+
+#nav-toggle.active span {
+  background-color: transparent;
+}
+
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+  top: 0;
+}
+
+#nav-toggle.active span:before {
+  transform: rotate(45deg);
+}
+
+#nav-toggle.active span:after {
+  transform: rotate(-45deg);
+}
+
+@media screen and (min-width: 800px) {
+  .nav-list {
+    display: block !important;
+  }
+}
+/* 
+.navigation – the outer wrapper for the navbar. Specifies the height and color, and will stretch the full width of the viewport.
+*/
+.navigation {
+  height: 60px;
+  background: #000000;
+}
+
+/*
+.nav-container – the inner wrapper for the navbar. Defines how far the actual content should stretch.
+*/
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.brand {
+  position: absolute;
+  padding-left: 20px;
+  float: left;
+  line-height: 70px;
+  text-transform: uppercase;
+  font-size: 1.4em;
+}
+
+.brand a,
+.brand a:visited {
+  color: #fffefe;
+  text-decoration: none;
+}
+
+/*-------------------------*/
+
+
+.services{
+  margin:70px 100px;
+}
+.services .services-dtl{
+  margin-top:60px;
+  min-height:155px
+}
+.services .services-dtl span{
+  color:#00b2ce;
+  font-size:30px;
+  line-height:normal
+}
+.services .services-dtl h3{
+  font-weight:400;
+  color:#304254;
+  font-size:16px;
+  margin-bottom:0
+}
+.services .services-dtl p{
+  color:#989898;
+  font-size:14px;
+  line-height:25px;
+  margin-top:15px
+}
+</style>
+<body>
+<!-- partial:index.partial.html -->
+<!-- 
+Following Tania Ruscia's tutorial on creating your own responsive dropdown navigation bar. https://www.taniarascia.com/responsive-dropdown-navigation-bar/
+-->
+<section class="navigation">
+  <div class="nav-container">
+    <div class="brand">
+      <a href="#!">FinMotoRobo</a>
+    </div>
+    <nav>
+      <div class="nav-mobile">
+        <a id="nav-toggle" href="#!"><span></span></a>
+      </div>
+      <ul class="nav-list">
+        <!-- Setting the links to #! will ensure that no action takes place on click. -->
+        <li><a href="#!">What's New</a></li>
+        <li><a href="#!">New to FinMotoRobo</a></li>
+        <li><a href="#!">Adjuster Support</a>
+          <ul class="nav-dropdown">
+            <li><a href="#!">Adjuster Dashboard</a></li>
+            <li><a href="#!">Claim Tools</a></li>
+            <li><a href="#!">Form Overview</a></li>
+            <li><a href="#!">Entering a Response/Decision</a></li>
+            <li><a href="#!">Target Date</a></li>
+            <li><a href="#!">Adjuster Reason Codes</a></li>
+          </ul>
+        </li>
+        <li><a href="#!">Troubleshooting</a></li>
+        <li><a href="#!">Resources</a></li>
+        <li><a href="#!">Privacy</a></li>
+        <img class="userpic" src="LOGO.png" alt="logo" width="45" height="45" />
+      </ul>
+    </nav>
+  </div>
+</section>
+
+<section class="services">
+  <h2 class="text-center">Our Best Services</h2>
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-3 services-dtl">
+              <span class="fa-solid fa-globe"></span>
+              <h3>What's New</h3>
+              <p>Stay up-to-date with the latest
+
+                news from FinMotoRobo or explore the
+                
+                archive</p>
+          </div>
+          <div class="col-sm-3 services-dtl">
+              <span class="fa-solid fa-seedling"></span>
+              <h3>New To FinMotoRobo</h3>
+              <p>Learn how to enroll and get started using FinMotoRobo</p>
+          </div>
+          <div class="col-sm-3 services-dtl">
+              <span class="fa-solid fa-building"></span>
+              <h3>Management and Administration</h3>
+              <p>Find out how to manage claimants and set up new users</p>
+          </div>
+          <div class="col-sm-3 services-dtl">
+              <span class="fa fa-life-ring"></span>
+              <h3>Adjuster Support</h3>
+              <p>Learn more about adjudicating OCFS and managing deadlines in FinMotoRobo</p>
+          </div>
+          <div class="col-sm-4 services-dtl">
+              <span class="fa-solid fa-computer"></span>
+              <h3>Troubleshooting</h3>
+              <p>Can't find the information you're looking for?
+                <br/>Find it here!
+              </p>
+          </div>
+          <div class="col-sm-4 services-dtl">
+              <span class="fa-solid fa-book-open"></span>
+              <h3>Resources</h3>
+              <p>Explore our comprehensive list of regulatory resources and guidelines</p>
+          </div>
+          <div class="col-sm-4 services-dtl">
+              <span class="fa-solid fa-lock"></span>
+              <h3>Privacy</h3>
+              <p>FinMotoRobo takes privacy and security seriously. Learn more and find out how you can help</p>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script>
+    (function($) { // Begin jQuery
+  $(function() { // DOM ready
+    // If a link has a dropdown, add sub menu toggle.
+    $('nav ul li a:not(:only-child)').click(function(e) {
+      $(this).siblings('.nav-dropdown').toggle();
+      // Close one dropdown when selecting another
+      $('.nav-dropdown').not($(this).siblings()).hide();
+      e.stopPropagation();
+    });
+    // Clicking away from dropdown will remove the dropdown class
+    $('html').click(function() {
+      $('.nav-dropdown').hide();
+    });
+    // Toggle open and close nav styles on click
+    $('#nav-toggle').click(function() {
+      $('nav ul').slideToggle();
+    });
+    // Hamburger to X toggle
+    $('#nav-toggle').on('click', function() {
+      this.classList.toggle('active');
+    });
+  }); // end DOM ready
+})(jQuery); // end jQuery
+  </script>
+
+</body>
+</html>
